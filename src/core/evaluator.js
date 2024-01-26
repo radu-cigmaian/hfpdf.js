@@ -2882,7 +2882,10 @@ class PartialEvaluator {
           textChunk.prevTransform = getCurrentTextTransform();
         }
 
-        const glyphUnicode = glyph.unicode;
+        var glyphUnicode = glyph.unicode;
+        if(glyphUnicode === '­' && glyph.originalCharCode == 16){
+          glyphUnicode = "-";
+        }
         if (saveLastChar(glyphUnicode)) {
           // The two last chars are a non-whitespace followed by a whitespace
           // and then this non-whitespace, so we insert a whitespace here.
